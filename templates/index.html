@@ -5,56 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/index.css">
-    <title>메인페이지</title>
-
-    <style>
-        body {
-            background: url(/img/body.png) no-repeat center fixed;
-            background-size: cover;
-            
-        }
-        .div_car{
-            text-align: center;
-            position: relative;
-            top: 300px;
-            
-        }
-        .emoji{
-            text-align: center;
-            position: relative;
-            top: 350px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="/static/img/sos.png" rel="shortcut icon" type="image/x-icon">
+    <title>구조대</title>
 </head>
 
 <body>
 
     <div class="emoji">
-        <a class="test" href="test.html">
+
+        <a href="/static/html/subpage.html?name=KJS">
             <div class="img-box1">
             </div>
         </a>
-        <a class="test" href="test.html">
+        <a href="/static/html/subpage.html?name=JIJ">
             <div class="img-box2">
             </div>
         </a>
-        <a class="test" href="test.html">
+        <a href="/static/html/subpage.html?name=AHM">
             <div class="img-box3">
             </div>
         </a>
-        <a class="test" href="test.html">
+        <a href="/static/html/subpage.html?name=YSM">
             <div class="img-box4">
             </div>
         </a>
-        <a class="test" href="test.html">
+        <a href="/static/html/subpage.html?name=KSH">
             <div class="img-box5">
             </div>
         </a>
     </div>
-<div class="div_car">
-<img src="../img/car.png" style="width:80%;height:550px;" alt="">
-</div>
+    <div class="car">
+    <img src="{{ url_for('static', filename='img/truck.png') }}" class="img" alt="">
+    </div>
+
 </body>
 
 </html>
