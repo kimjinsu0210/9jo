@@ -113,6 +113,24 @@
             </div>
         </section>
     </div>
+    <script>
+        function show_team_list() {
+        fetch('/##').then(res => res.json()).then(data => {
+            let rows = data['result']
+            document.querySelector('.team-list').remove()
+            
+            let team_lists = document.querySelectorAll('.team-list li');
+            for(let i=0; i < team_lists.length; i++){
+                team_lists[i].innerHTML =`<li><a href="">
+                                <img class="imoji" src="${imageURL}"> ${name}</a></li>`
+            }
+            })
+        }
+      console.log(11)
+      
+
+
+    </script>
 </body>
 
 </html>
