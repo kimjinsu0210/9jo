@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>9조 대원 소개</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/subpage.css">
+
+    <script>
+
+        function show_info() {
+            fetch('/members').then((res) => res.json()).then((data) => {
+                let rows = data['result']
+                rows.forEach((a) => {
+                    let myname = a['myname'];
+                    let mbti = a['mbti'];
+                    let hobby = a['hobby'];
+                    let merit = a['merit'];
+                    let blog = a['blog'];
+                    let style = a['style'];
+                    let signature = a['signature'];
+                    let goal = a['goal'];
+                    let promise = a['promise'];
+
+                    let show = document.querySelectorAll(".team-list li")
+
+                    for (let i = 0; i < show.length; i++) {
+                        show[i].addEventListener('click', () => {
+
+                            $('input[name=이름]').attr('value', myname);
+                            $('input[name=엠비티아이]').attr('value', mbti);
+                            $('input[name=취미]').attr('value', hobby);
+                            $('input[name=장점]').attr('value', merit);
+                            $('input[name=블로그]').attr('value', blog);
+                            $('input[name=스타일]').attr('value', style);
+                            $('input[name=특징]').attr('value', signature);
+                            $('input[name=목표]').attr('value', goal);
+                            $('input[name=약속]').attr('value', promise);
+
+                        })
+                    }
+                })
+            })
+
+
+
+
+        }
+
+
+        function save_info() {
+            let myname = $('#myname').val();
+            let mbti = $('#mbti').val();
+            let hobby = $('#hobby').val();
+            let merit = $('#merit').val();
+            let blog = $('#blog').val();
+            let style = $('#style').val();
+            let signature = $('#signature').val();
+            let goal = $('#goal').val();
+            let promise = $('#promise').val();
+
+            let formData = new FormData();
+            formData.append("myname_give", myname);
+            formData.append("mbti_give", mbti);
+            formData.append("hobby_give", hobby);
+            formData.append("merit_give", merit);
+            formData.append("blog_give", blog);
+            formData.append("style_give", style);
+            formData.append("signature_give", signature);
+            formData.append("goal_give", goal);
+            formData.append("promise_give", promise);
+
+            fetch('/members', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
+                alert(data["msg"]);
+            });
+        } 1
+
+        function content_modify() {
+            const BTN = document.getElementById('btn');
+            const READ = document.querySelectorAll('.tbox');
+
+            BTN.addEventListener("click", function () {
+                if (BTN.innerText === '내용 수정') {
+                    BTN.innerText = '완료';
+                } else BTN.innerText = '내용 수정';
+            })
+
+            BTN.addEventListener("click", function () {
+                if (BTN.innerText === '내용 수정') {
+                    document.getElementById('target_btn').style.visibility = 'hidden'
+                } else { document.getElementById('target_btn').style.visibility = 'visible' }
+            })
+
+
+            READ.forEach((a) => {
+                BTN.addEventListener("click", function () {
+                    if (BTN.innerText === '내용 수정') {
+                        a.readOnly = true;
+                    } else {
+                        a.readOnly = false;
+                    }
+                })
+            })
+        }
+
+
+    </script>
+
+    </script>
+
+</head>
+
+<body>
+    <div class="container">
+        <section class="box">
+            <aside class="box-i">
+                <div class="box-top">
+                    <ul class="team-list">
+                        <label class="member">9조대원 LIST</label>
+                        <li><button onclick="show_info()" class="team-name" id="김성훈">
+                                <img class="imoji" src="/static/img/KSH.png"> 김성훈</button>
+                        </li>
+                        <li><button onclick="show_info()" class="team-name" id="조인재">
+                                <img class="imoji" src="/static/img/JIJ.png"> 조인재</button>
+                        </li>
+                        <li><button onclick="show_info()" class="team-name" id="김진수">
+                                <img class="imoji" src="/static/img/KJS.png"> 김진수</button>
+                        </li>
+                        <li><button onclick="show_info()" class="team-name" id="윤수민">
+                                <img class="imoji" src="/static/img/YSM.png"> 윤수민</button>
+                        </li>
+                        <li><button onclick="show_info()" class="team-name" id="안홍민">
+                                <img class="imoji" src="/static/img/AHM.png"> 안홍민</button>
+                        </li>
+                    </ul>
+                </div>
+                <a heref="">
+                    <div class="box-under">메인 페이지</div>
+                </a>
+            </aside>
+
+            <div class="box-contents">
+                <div class="content">
+                    <img class="main-imoji" src="/static/img/mouse.png">
+                    <form name="" method="" action="">
+                        <div class="controls">
+                            <p>
+                                <label for="myname">이름 </label><br>
+                                <input type="text" class="tbox" id="myname" name="이름" value="" readonly>
+                            </p>
+                            <p>
+                                <label for="mbti">MBTI </label><br>
+                                <input type="text" class="tbox" id="mbti" name="엠비티아이" value="" readonly>
+                            </p>
+                            <p>
+                                <label for="hobby">취미 </label><br>
+                                <input type="text" class="tbox" id="hobby" name="취미" value="" readOnly>
+                            </p>
+                            <p>
+                                <label for="merit">장점 </label><br>
+                                <input type="text" class="tbox" id="merit" name="장점" value="" readOnly>
+                            </p>
+                            <p>
+                                <label for="blog">블로그 </label><br>
+                                <input type="text" class="tbox" id="blog" name="블로그" value="" readOnly>
+                            </p>
+                            <p>
+                                <label for="style">협업 스타일 </label><br>
+                                <input type="text" class="tbox" id="style" name="스타일" value="" readOnly>
+                            </p>
+                            <p>
+                                <label for="team-sgnt">팀 특징 </label><br>
+                                <input type="text" class="tbox" id="signature" name="특징" value="" readonly>
+                            </p>
+                            <p>
+                                <label for="team-goal">팀 목표 </label><br>
+                                <input type="text" class="tbox" id="goal" name="목표" value="" readonly>
+                            </p>
+                            <p>
+                                <label for="team-prom">팀 약속 </label><br>
+                                <input type="text" class="tbox" id="promise" name="약속" value="" readonly>
+                            </p>
+                        </div>
+                </div>
+                <div class="btn">
+                    <button type="button" class="submit-btn" onclick="save_info()" id="target_btn">저장/전송</button>
+                    <button type="button" onclick="content_modify()" id="btn" class="change-btn">내용 수정</button>
+                </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
