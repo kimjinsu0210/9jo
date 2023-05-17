@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9조 대원 소개</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/subpage.css">
+
+  <script>
+    function content_modify() {
+      document.getElementByld()
+    }
+
+    function show_info() {
+      $(".team-name").on('click', function (e) {
+        let value = e.target.id
+        console.log(value)
+
+        fetch('/input').then(res => res.json()).then(data => {
+          let rows = data['result'];
+          
+          rows.forEach((a) => {
+            let name = a['name'];
+            let mbti = a['mbti'];
+            let hobby = a['hobby'];
+            let merit = a['merit'];
+            let style = a['style'];
+            let blog = a['blog'];
+
+            if (value === name) {
+              $('#controls').empty();
+              let temp_html =`<p>
+                                <label for="name">이름 </label>
+                                <div>${name}</div>
+                              </p>
+                              <p>
+                                <label for="name">MBTI </label>
+                                <div>${mbti}</div>
+                              </p>
+                              <p>
+                                <label for="hobby">취미 </label>
+                                <input type="text" id="hobby" name="hobby" placeholder="${hobby}" readonly />
+                              </p>
+                              <p>
+                                <label for="place">장점</label>
+                                <input type="text" id="merit" name="place" placeholder="${merit}" readonly />
+                              </p>
+                              <p>
+                                <label for="style">협업 스타일</label>
+                                <input type="text" id="style" name="style" placeholder="${style}" readonly />
+                              </p>
+                              <p>
+                                <label for="blog">블로그 주소</label>
+                                <input type="text" id="blog" name="blog" placeholder="${blog}" readonly />
+                              </p>
+                            </div>
+                        </div>`
+              $('#controls').append(temp_html);
+            }
+          });
+        })
+      }
+      )
+    }
+
+    function save_info() {
+      let name = $('#name').val();
+      let mbti = $('#mbti').val();
+      let hobby = $('#hobby').val();
+      let merit = $('#merit').val();
+      let style = $('#style').val();
+      let blog = $('#blog').val();
+    
+      let formData = new FormData();
+      formData.append('name', myname);
+      formData.append('mbti', mbti);
+      formData.append('hobby', hobby);
+      formData.append('merit', merit);
+      formData.append('style', style);
+      formData.append('blog', blog);
+
+      fetch('/input', { method: "POST", body: formData, }).then((response) => response.json()).then((data) => {
+        alert(data["msg"]);
+        window.location.reload();
+      });
+    }
+  </script>
+
+</head>
+
+<body>
+  <div class="container">
+    <section class="box">
+      <aside class="box-sidebar">
+        <ul class="team-list">
+          <label class="member">9조대원 LIST</label>
+          <p>
+            <li><button  onclick="show_info()" class="team-name" id="김성훈" >
+                <img class="imoji" src="/static/img/KSH.png"> 김성훈</button>
+            </li>
+          </p>
+          <p>
+            <li><button onclick="show_info()" class="team-name" id="조인재">
+                <img class="imoji" src="/static/img/JIJ.png"> 조인재</button>
+            </li>
+          </p>
+          <p>
+            <li><button onclick="show_info()" class="team-name" id="김진수">
+                <img class="imoji" src="/static/img/KJS.png"> 김진수</button>
+            </li>
+          </p>
+          <p>
+            <li><button onclick="show_info()" class="team-name" id="윤수민">
+                <img class="imoji" src="/static/img/YSM.png"> 윤수민</button>
+            </li>
+          </p>
+          <p>
+            <li><button onclick="show_info()" class="team-name" id="안홍민">
+                <img class="imoji" src="/static/img/AHM.png"> 안홍민</button>
+            </li>
+          </p>
+        </ul>
+      </aside>
+      <div class="box-contents">
+        <div class="content">
+          <img class="main-imoji" src="/static/img/mouse.png">
+          <form name="" method="" action="">
+            <div class="controls" id="controls">
+              <p>
+                <label for="name">이름 </label>
+                <input type="text" id="name" name="name" readonly />
+              </p>
+              <p>
+                <select class="MBTI-list" id="mbti">
+                  <option label="MBTI"></option>
+                  <option value="1">ENFP</option>
+                  <option value="2">ENTP</option>
+                  <option value="3">ENFJ</option>
+                  <option value="4">ENTJ</option>
+                  <option value="5">ESFP</option>
+                  <option value="6">ESTP</option>
+                  <option value="7">ESFJ</option>
+                  <option value="8">ESFP</option>
+                  <option value="9">INFP</option>
+                  <option value="10">INTP</option>
+                  <option value="11">INFJ</option>
+                  <option value="12">INTJ</option>
+                  <option value="13">ISTP</option>
+                  <option value="14">ISTJ</option>
+                  <option value="15">ISFP</option>
+                  <option value="16">ISFJ</option>
+                </select>
+              </p>
+              <p>
+                <label for="hobby">취미 </label>
+                <input type="text" id="hobby" name="hobby" readonly />
+              </p>
+              <p>
+                <label for="place">장점</label>
+                <input type="text" id="merit" name="place" readonly />
+              </p>
+              <p>
+                <label for="style">협업 스타일</label>
+                <input type="text" id="style" name="style" readonly />
+              </p>
+              <p>
+                <label for="blog">블로그 주소</label>
+                <input type="text" id="blog" name="blog" readonly />
+              </p>
+            </div>
+        </div>
+        <p><textarea class="introduce" placeholder="  개인 소개" id="id" name="introduce" readonly></textarea></p>
+        <input type="button" onclick="content_modify()" id="btn" class="btn btn-outline-dark" value="내용 수정"
+          name=""></button></form>
+      </div>
+    </section>
+  </div>
+  <button type="button" id="main-btn" class="btn btn-outline-dark">메인페이지</button>
+  <input type="button" value="정보넣기" onclick="location.href='input.html'">
+</body>
+
+</html>

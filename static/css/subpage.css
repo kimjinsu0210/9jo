@@ -25,7 +25,7 @@
 
 .box-sidebar {
     width: 400px;
-    height: 600px;
+    height: 700px;
     flex-shrink: 0;
     border: solid 2px rgb(32, 32, 32);
     border-radius: 40px;    
@@ -33,7 +33,7 @@
 
 .box-contents {
     flex-grow: 1;
-    height: 750px;
+    height: 1000px;
     border: solid 2px rgb(32, 32, 32);
     border-radius: 40px;
           
@@ -66,7 +66,8 @@ a:hover {
     width: 90px;
     height: 90px;
     border-radius: 50%;
-    background-color: rgb(212, 212, 212);          
+    background-color: rgb(212, 212, 212);        
+    margin: 10px;
 }
 
 .content {
@@ -106,3 +107,19 @@ a:hover {
 input {
     margin: 3px;
 }
+
+li:hover {
+    background-color: rgb(244, 244, 244);
+    transition: 0.2s;
+  }
+
+  .team-name {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+  }
+
+  #main-btn {
+    margin: -120px 20px 0px 275px;
+    width: 390px;
+  }

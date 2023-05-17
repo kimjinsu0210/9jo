@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect
 app = Flask(__name__)
 
 from pymongo import MongoClient
@@ -7,26 +7,30 @@ db = client.dbsparta
 
 @app.route('/')
 def home():
-    return render_template('subpage.html')
+    return redirect('/static/html/subpage.html')
 
-@app.route("/info", methods=["POST"])
-def bucket_post():
-    myname_receive = request.form['myname_give']
-    mbti_receive = request.form['mbti_give']
-    hobby_receive = request.form['hobby_give']
-    blog_receive = request.form['blog_give']
-    comment_receive = request.form['comment_give']
-    doc = { 'myname': myname_receive,
-            'mbti':mbti_receive,
-            'hobby':hobby_receive,
-            'blog':blog_receive,
-            'comment':comment_receive}
-    db.info.insert_one(doc)
-    return jsonify({'msg': '저장완료!'})
-    
-@app.route("/info", methods=["GET"])
+@app.route("/input", methods=["POST"])
+def input():
+    name = request.form['name']
+    mbti = request.form['mbti']
+    hobby = request.form['hobby']
+    merit = request.form['merit']
+    style = request.form['style']
+    blog = request.form['blog']
+    doc = {
+        'name': name,
+        'mbti': mbti,
+        'hobby': hobby,
+        'merit': merit,
+        'style': style,
+        'blog': blog
+    }
+    db.introduce.insert_one(doc)
+    return redirect('/static/html/input.html')
+
+@app.route("/input", methods=["GET"])
 def bucket_get():
-    all_info = list(db.info.find({},{'_id':False}))
+    all_info = list(db.introduce.find({},{'_id':False}))
     return jsonify({'result': all_info})
 
 if __name__ == '__main__':
