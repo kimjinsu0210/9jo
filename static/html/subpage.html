@@ -13,19 +13,45 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/subpage.css">
-    
+    <link rel="stylesheet" href="subpage.css">
+
     <script>
+
         function content_modify() {
-            document.getElementByld()
+            const BTN = document.getElementById('btn');
+            const READ = document.querySelectorAll('.tbox');
+
+            BTN.addEventListener("click", function () {
+                if (BTN.innerText === '내용 수정') {
+                    BTN.innerText = '완료';
+                } else BTN.innerText = '내용 수정';
+            })
+
+            BTN.addEventListener("click", function () {
+                if (BTN.innerText === '내용 수정') {
+                    document.getElementById('target_btn').style.visibility = 'hidden'
+                } else { document.getElementById('target_btn').style.visibility = 'visible' }
+            })
+
+
+            READ.forEach((a) => {
+                BTN.addEventListener("click", function () {
+                    if (BTN.innerText === '내용 수정') {
+                        a.readOnly = true;
+                    } else {
+                        a.readOnly = false;
+                    }
+                })
+            })
         }
+
+
+    </script>
+
     </script>
 
 </head>
@@ -33,78 +59,95 @@
 <body>
     <div class="container">
         <section class="box">
-            <aside class="box-sidebar">
-                <ul class="team-list">
-                    <label class="member">9조대원 LIST</label>
-                    <p>
-                        <li><a href="">
-                                <img class="imoji" src="/static/img/mouse.png"> 김성훈</a>
-                        </li>
-                    </p>
-                    <p>
-                        <li><a href="">
-                                <img class="imoji" src="/static/img/mouse.png"> 조인재</a>
-                        </li>
-                    </p>
-                    <p>
-                        <li><a href="">
-                                <img class="imoji" src="/static/img/mouse.png"> 김진수</a>
-                        </li>
-                    </p>
-                    <p>
-                        <li><a href="">
-                                <img class="imoji" src="/static/img/mouse.png"> 윤수민</a>
-                        </li>
-                    </p>
-                    <p>
-                        <li><a href="">
-                                <img class="imoji" src="/static/img/mouse.png"> 안홍민</a>
-                        </li>
-                    </p>
-                </ul>
+            <aside class="box-i">
+                <div class="box-top">
+                    <ul class="team-list">
+                        <label class="member">9조대원 LIST</label>
+                        <p>
+                            <li><a href="/static/html/subpage.html?name=KSH" onclick="show_info()" id="김성훈"
+                                    data-value="김성훈">
+                                    <img class="imoji" src="/static/img/KSH.png"> 김성훈</a>
+                            </li>
+                        </p>
+                        <p>
+                            <li><a href="/static/html/subpage.html?name=JIJ" onclick="show_info()" id="조인재"
+                                    data-value="조인재">
+                                    <img class="imoji" src="/static/img/JIJ.png"> 조인재</a>
+                            </li>
+                        </p>
+                        <p>
+                            <li><a href="/static/html/subpage.html?name=KJS" onclick="show_info()" id="김진수"
+                                    data-value="김진수">
+                                    <img class="imoji" src="/static/img/KJS.png"> 김진수</a>
+                            </li>
+                        </p>
+                        <p>
+                            <li><a href="/static/html/subpage.html?name=YSM" onclick="show_info()" id="윤수민"
+                                    data-value="윤수민">
+                                    <img class="imoji" src="/static/img/YSM.png"> 윤수민</a>
+                            </li>
+                        </p>
+                        <p>
+                            <li><a href="/static/html/subpage.html?name=AHM" onclick="show_info()" id="안홍민"
+                                    data-value="안홍민">
+                                    <img class="imoji" src="/static/img/AHM.png"> 안홍민</a>
+                            </li>
+                        </p>
+                    </ul>
+                </div>
+                <a heref="">
+                    <div class="box-under">메인 페이지</div>
+                </a>
             </aside>
+
             <div class="box-contents">
                 <div class="content">
                     <img class="main-imoji" src="/static/img/mouse.png">
                     <form name="" method="" action="">
                         <div class="controls">
                             <p>
-                                <label for="name">이름 </label>
-                                <input type="text" id="id" name="name" readonly/>
+                                <label for="myname">이름 </label><br>
+                                <input type="text" class="tbox" id="myname" readonly>
                             </p>
                             <p>
-                                <select class="MBTI-list" id="id">
-                                    <option label="MBTI"></option>
-                                    <option value="1">ENFP</option>
-                                    <option value="2">ENTP</option>
-                                    <option value="3">ENFJ</option>
-                                    <option value="4">ENTJ</option>
-                                    <option value="5">ESFP</option>
-                                    <option value="6">ESTP</option>
-                                    <option value="7">ESFJ</option>
-                                    <option value="8">ESFP</option>
-                                    <option value="9">INFP</option>
-                                    <option value="10">INTP</option>
-                                    <option value="11">INFJ</option>
-                                    <option value="12">INTJ</option>
-                                    <option value="13">ISTP</option>
-                                    <option value="14">ISTJ</option>
-                                    <option value="15">ISFP</option>
-                                    <option value="16">ISFJ</option>
-                                </select>
+                                <label for="mbti">MBTI </label><br>
+                                <input type="text" class="tbox" id="mbti" readonly>
                             </p>
                             <p>
-                                <label for="hobby">취미 </label>
-                                <input type="text" id="id" name="hobby" readonly/>
+                                <label for="hobby">취미 </label><br>
+                                <input type="text" class="tbox" id="hobby" readOnly>
                             </p>
                             <p>
-                                <label for="place">사는 곳 </label>
-                                <input type="text" id="id" name="place" readonly/>
+                                <label for="merit">장점 </label><br>
+                                <input type="text" class="tbox" id="merit" readOnly>
+                            </p>
+                            <p>
+                                <label for="blog">블로그 </label><br>
+                                <input type="text" class="tbox" id="blog" readOnly>
+                            </p>
+                            <p>
+                                <label for="style">협업 스타일 </label><br>
+                                <input type="text" class="tbox" id="style" readOnly>
+                            </p>
+                            <p>
+                                <label for="team-sgnt">팀 특징 </label><br>
+                                <input type="text" class="tbox" id="signature" readonly>
+                            </p>
+                            <p>
+                                <label for="team-goal">팀 목표 </label><br>
+                                <input type="text" class="tbox" id="goal" readonly>
+                            </p>
+                            <p>
+                                <label for="team-prom">팀 약속 </label><br>
+                                <input type="text" class="tbox" id="promise" readonly>
                             </p>
                         </div>
                 </div>
-                <p><textarea class="introduce" placeholder="  개인 소개" id="id" name="introduce" readonly></textarea></p>
-                <input type="button" onclick="content_modify()" id="btn" class="btn btn-outline-dark" value="내용 수정" name=""></button></form>
+                <div class="btn">
+                    <button type="button" class="submit-btn" onclick="save_info()" id="target_btn">저장/전송</button>
+                    <button type="button" onclick="content_modify()" id="btn" class="change-btn">내용 수정</button>
+                </div>
+                </form>
             </div>
         </section>
     </div>
