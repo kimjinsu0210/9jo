@@ -61,6 +61,26 @@ a:hover {
     max-height: 600px;
 }
 
+.go_main{
+    margin-top: 90px;
+    margin-left: -20px;
+    width: 400px;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+}
+
+
+.go_main a{
+    border-radius: 15px;
+    border: 2px solid black;
+    display: block;
+    height: inherit;
+    transition: all .3s;
+}
+.go_main a:hover{
+    background: rgba(0,0,0,0.1);
+}
 
 .imoji {
     width: 90px;
