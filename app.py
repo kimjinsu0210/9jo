@@ -7,7 +7,7 @@ db = client.dbsparta
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('static/html/subpage.html')
 
 @app.route("/info", methods=["POST"])
 def bucket_post():
