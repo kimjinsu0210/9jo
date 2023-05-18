@@ -26,6 +26,9 @@ def input():
     merit = request.form['merit']
     style = request.form['style']
     blog = request.form['blog']
+    signature = request.form['signature']
+    goal = request.form['goal']
+    promise = request.form['promise']
 
     doc = {
         'name': name,
@@ -33,7 +36,10 @@ def input():
         'hobby': hobby,
         'merit': merit,
         'style': style,
-        'blog': blog
+        'blog': blog,
+        'signature': signature,
+        'goal': goal,
+        'promise': promise
     }
     db.introduce.insert_one(doc)
     return redirect('/static/html/input.html') 
@@ -47,6 +53,9 @@ def modify():
     merit = request.form['merit']
     style = request.form['style']
     blog = request.form['blog']
+    signature = request.form['signature']
+    goal = request.form['goal']
+    promise = request.form['promise']
 
     db.introduce.delete_one({'name': name})
     doc = {
@@ -55,7 +64,10 @@ def modify():
         'hobby': hobby,
         'merit': merit,
         'style': style,
-        'blog': blog
+        'blog': blog,
+        'signature': signature,
+        'goal': goal,
+        'promise': promise
     }
     db.introduce.insert_one(doc)
     user = db.introduce.find_one({'name':name},{'_id':False})
