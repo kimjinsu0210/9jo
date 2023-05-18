@@ -125,7 +125,6 @@ function content_modify() {
   let style = $("#style").val();
   let blog = $("#blog").val();
   let signature = $("#signature").val();
-  console.log(signature);
   let goal = $("#goal").val();
   let promise = $("#promise").val();
   $(".controls").empty();
