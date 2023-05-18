@@ -1,68 +1,78 @@
-
 $(document).ready(function () {
+  //이미지 변경
+  $(".img_change1").hover(
+    function () {
+      $("#img1").attr("src", "/static/img/KSH2.gif");
+    },
+    function () {
+      $("#img1").attr("src", "/static/img/KSH.png");
+    }
+  );
+  $(".img_change2").hover(
+    function () {
+      $("#img2").attr("src", "/static/img/JIJ2.gif");
+    },
+    function () {
+      $("#img2").attr("src", "/static/img/JIJ.png");
+    }
+  );
+  $(".img_change3").hover(
+    function () {
+      $("#img3").attr("src", "/static/img/KJS2.gif");
+    },
+    function () {
+      $("#img3").attr("src", "/static/img/KJS.png");
+    }
+  );
+  $(".img_change4").hover(
+    function () {
+      $("#img4").attr("src", "/static/img/YSM2.gif");
+    },
+    function () {
+      $("#img4").attr("src", "/static/img/YSM.png");
+    }
+  );
+  $(".img_change5").hover(
+    function () {
+      $("#img5").attr("src", "/static/img/AHM2.gif");
+    },
+    function () {
+      $("#img5").attr("src", "/static/img/AHM.png");
+    }
+  );
 
-    //이미지 변경
-    $('.img_change1').hover(function () {
-        $("#img1").attr("src", "/static/img/KSH2.gif");
-    },
-    function () {
-        $("#img1").attr("src", "/static/img/KSH.png");
-    })
-    $('.img_change2').hover(function () {
-        $("#img2").attr("src", "/static/img/JIJ2.gif");
-    },
-    function () {
-        $("#img2").attr("src", "/static/img/JIJ.png");
-    })
-    $('.img_change3').hover(function () {
-        $("#img3").attr("src", "/static/img/KJS2.gif");
-    },
-    function () {
-        $("#img3").attr("src", "/static/img/KJS.png");
-    })
-    $('.img_change4').hover(function () {
-        $("#img4").attr("src", "/static/img/YSM2.gif");
-    },
-    function () {
-        $("#img4").attr("src", "/static/img/YSM.png");
-    })
-    $('.img_change5').hover(function () {
-        $("#img5").attr("src", "/static/img/AHM2.gif");
-    },
-    function () {
-        $("#img5").attr("src", "/static/img/AHM.png");
-    })
-
-    // 팀원 list
-    const searchParams = new URLSearchParams(location.search);
-    let name = searchParams.get('name')
-    let formData = new FormData();
-    formData.append("name", name);
-    fetch('/information', { method: "POST", body: formData, }).then((response) => response.json()).then((data) => {
-        let a = data['result']
-        $('.content').empty()
-        let name = a['name']
-        let mbti = a['mbti']
-        let hobby = a['hobby']
-        let merit = a['merit']
-        let style = a['style']
-        let blog = a['blog']
-        let signature = a['signature']
-        let goal = a['goal']
-        let promise = a['promise']
-        let imageURL = "";
-        if (name == '김진수') {
-            imageURL = "/static/img/KJS.png"
-        } else if (name == '김성훈') {
-            imageURL = "/static/img/KSH.png"
-        } else if (name == '조인재') {
-            imageURL = "/static/img/JIJ.png"
-        } else if (name == '윤수민') {
-            imageURL = "/static/img/YSM.png"
-        } else if (name == '안홍민') {
-            imageURL = "/static/img/AHM.png"
-        }
-        let temp_html = `<img class="main-imoji" src="${imageURL}">
+  // 팀원 list
+  const searchParams = new URLSearchParams(location.search);
+  let name = searchParams.get("name");
+  let formData = new FormData();
+  formData.append("name", name);
+  fetch("/information", { method: "POST", body: formData })
+    .then((response) => response.json())
+    .then((data) => {
+      let a = data["result"];
+      $(".content").empty();
+      let name = a["name"];
+      let mbti = a["mbti"];
+      let hobby = a["hobby"];
+      let merit = a["merit"];
+      let style = a["style"];
+      let blog = a["blog"];
+      let signature = a["signature"];
+      let goal = a["goal"];
+      let promise = a["promise"];
+      let imageURL = "";
+      if (name == "김진수") {
+        imageURL = "/static/img/KJS.png";
+      } else if (name == "김성훈") {
+        imageURL = "/static/img/KSH.png";
+      } else if (name == "조인재") {
+        imageURL = "/static/img/JIJ.png";
+      } else if (name == "윤수민") {
+        imageURL = "/static/img/YSM.png";
+      } else if (name == "안홍민") {
+        imageURL = "/static/img/AHM.png";
+      }
+      let temp_html = `<img class="main-imoji" src="${imageURL}">
                     <div class="controls">
                         <p>
                         <label for="name">이름</label><br>
@@ -100,28 +110,26 @@ $(document).ready(function () {
                         <label for="blog">팀 약속</label>
                         <input class="tbox" type="text" id="promise" name="promise" value="${promise}"/>
                     </p>
-                    </div>`
-        $('.content').append(temp_html)
-    })
-
-
+                    </div>`;
+      $(".content").append(temp_html);
+    });
 });
 
 // 팀원 정보 띄워주기
 function content_modify() {
-    $('.modify_complete').empty()
-    let name = $('#name').val()
-    let mbti = $('#mbti').val()
-    let hobby = $('#hobby').val()
-    let merit = $('#merit').val()
-    let style = $('#style').val()
-    let blog = $('#blog').val()
-    let signature = $('#signature').val()
-    console.log(signature)
-    let goal = $('#goal').val()
-    let promise = $('#promise').val()
-    $('.controls').empty()
-    let temp_html = `<div class="controls">
+  $(".modify_complete").empty();
+  let name = $("#name").val();
+  let mbti = $("#mbti").val();
+  let hobby = $("#hobby").val();
+  let merit = $("#merit").val();
+  let style = $("#style").val();
+  let blog = $("#blog").val();
+  let signature = $("#signature").val();
+  console.log(signature);
+  let goal = $("#goal").val();
+  let promise = $("#promise").val();
+  $(".controls").empty();
+  let temp_html = `<div class="controls">
                         <p>
                         <label for="name">이름</label><br>
                         <input class="input_tag" type="text" id="name" name="name" value="${name}" readonly/>
@@ -163,33 +171,35 @@ function content_modify() {
                     <div class="update">
                     <input type="button" onclick="complete_modify()" id="btn" class="change-btn2" value="수정완료">
                     <div>
-                    `
-    $('.controls').append(temp_html)
+                    `;
+  $(".controls").append(temp_html);
 }
 
 // 정보 수정하기
 function complete_modify() {
-    $('.update').empty()
-    let name = $('#name').val()
-    let mbti = $('#mbti').val()
-    let hobby = $('#hobby').val()
-    let merit = $('#merit').val()
-    let style = $('#style').val()
-    let blog = $('#blog').val()
-    let signature = $('#signature').val()
-    let goal = $('#goal').val()
-    let promise = $('#promise').val()
-    let formData = new FormData();
-    formData.append("name", name);
-    formData.append("mbti", mbti);
-    formData.append("hobby", hobby);
-    formData.append("merit", merit);
-    formData.append("style", style);
-    formData.append("blog", blog);
-    formData.append("signature", signature);
-    formData.append("goal", goal);
-    formData.append("promise", promise);
-    fetch('/modify', { method: "POST", body: formData, }).then((response) => response.json()).then((data) => {
-        window.location.reload()
-    })
+  $(".update").empty();
+  let name = $("#name").val();
+  let mbti = $("#mbti").val();
+  let hobby = $("#hobby").val();
+  let merit = $("#merit").val();
+  let style = $("#style").val();
+  let blog = $("#blog").val();
+  let signature = $("#signature").val();
+  let goal = $("#goal").val();
+  let promise = $("#promise").val();
+  let formData = new FormData();
+  formData.append("name", name);
+  formData.append("mbti", mbti);
+  formData.append("hobby", hobby);
+  formData.append("merit", merit);
+  formData.append("style", style);
+  formData.append("blog", blog);
+  formData.append("signature", signature);
+  formData.append("goal", goal);
+  formData.append("promise", promise);
+  fetch("/modify", { method: "POST", body: formData })
+    .then((response) => response.json())
+    .then((data) => {
+      window.location.reload();
+    });
 }
