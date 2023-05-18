@@ -22,24 +22,23 @@
     <script>
 
         function show_info() {
-            fetch('/members').then((res) => res.json()).then((data) => {
-                let rows = data['result']
-                rows.forEach((a) => {
-                    let myname = a['myname'];
-                    let mbti = a['mbti'];
-                    let hobby = a['hobby'];
-                    let merit = a['merit'];
-                    let blog = a['blog'];
-                    let style = a['style'];
-                    let signature = a['signature'];
-                    let goal = a['goal'];
-                    let promise = a['promise'];
+            $(".team-name").on('click', function (e) {
+                let value = e.target.id
 
-                    let show = document.querySelectorAll(".team-list li")
+                fetch('/members').then((res) => res.json()).then((data) => {
+                    let rows = data['result']
+                    rows.forEach((a) => {
+                        let myname = a['myname'];
+                        let mbti = a['mbti'];
+                        let hobby = a['hobby'];
+                        let merit = a['merit'];
+                        let blog = a['blog'];
+                        let style = a['style'];
+                        let signature = a['signature'];
+                        let goal = a['goal'];
+                        let promise = a['promise'];
 
-                    for (let i = 0; i < show.length; i++) {
-                        show[i].addEventListener('click', () => {
-
+                        if (value === myname) {
                             $('input[name=이름]').attr('value', myname);
                             $('input[name=엠비티아이]').attr('value', mbti);
                             $('input[name=취미]').attr('value', hobby);
@@ -49,15 +48,15 @@
                             $('input[name=특징]').attr('value', signature);
                             $('input[name=목표]').attr('value', goal);
                             $('input[name=약속]').attr('value', promise);
-
-                        })
-                    }
+                        }
+                        /*let show = document.querySelectorAll(".team-list li")
+                        for (let i = 0; i < show.length; i++) {
+                            show[i].addEventListener('click', () => {
+                            })
+                        }*/
+                    })
                 })
             })
-
-
-
-
         }
 
 
@@ -96,23 +95,20 @@
                 if (BTN.innerText === '내용 수정') {
                     BTN.innerText = '완료';
                 } else BTN.innerText = '내용 수정';
-            })
 
-            BTN.addEventListener("click", function () {
                 if (BTN.innerText === '내용 수정') {
                     document.getElementById('target_btn').style.visibility = 'hidden'
                 } else { document.getElementById('target_btn').style.visibility = 'visible' }
             })
-
-
             READ.forEach((a) => {
-                BTN.addEventListener("click", function () {
-                    if (BTN.innerText === '내용 수정') {
-                        a.readOnly = true;
-                    } else {
-                        a.readOnly = false;
-                    }
-                })
+                if (BTN.innerText === '내용 수정') {
+                    a.readOnly = true;
+                } else {
+                    a.readOnly = false;
+                }
+                if (BTN.innerText === '내용 수정') {
+                    a.value = null;
+                }
             })
         }
 
@@ -167,19 +163,19 @@
                             </p>
                             <p>
                                 <label for="hobby">취미 </label><br>
-                                <input type="text" class="tbox" id="hobby" name="취미" value="" readOnly>
+                                <input type="text" class="tbox" id="hobby" name="취미" value="" readonly>
                             </p>
                             <p>
                                 <label for="merit">장점 </label><br>
-                                <input type="text" class="tbox" id="merit" name="장점" value="" readOnly>
+                                <input type="text" class="tbox" id="merit" name="장점" value="" readonly>
                             </p>
                             <p>
                                 <label for="blog">블로그 </label><br>
-                                <input type="text" class="tbox" id="blog" name="블로그" value="" readOnly>
+                                <input type="text" class="tbox" id="blog" name="블로그" value="" readonly>
                             </p>
                             <p>
                                 <label for="style">협업 스타일 </label><br>
-                                <input type="text" class="tbox" id="style" name="스타일" value="" readOnly>
+                                <input type="text" class="tbox" id="style" name="스타일" value="" readonly>
                             </p>
                             <p>
                                 <label for="team-sgnt">팀 특징 </label><br>
