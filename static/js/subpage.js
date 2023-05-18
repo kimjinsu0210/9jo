@@ -60,6 +60,7 @@ $(document).ready(function () {
       let signature = a["signature"];
       let goal = a["goal"];
       let promise = a["promise"];
+      let comment = a["comment"];
       let imageURL = "";
       if (name == "김진수") {
         imageURL = "/static/img/KJS.png";
@@ -72,45 +73,48 @@ $(document).ready(function () {
       } else if (name == "안홍민") {
         imageURL = "/static/img/AHM.png";
       }
-      let temp_html = `<img class="main-imoji" src="${imageURL}">
-                    <div class="controls">
-                        <p>
-                        <label for="name">이름</label><br>
-                        <input class="tbox" type="text" id="name" name="name" value="${name}"readonly />
-                    </p>
-                    <p>
-                        <label for="mbti">MBTI</label><br>
-                        <input class="tbox" type="text" id="mbti" name="mbti" value="${mbti}"readonly />
-                    </p>
-                    <p>
-                        <label for="hobby">취미</label><br>
-                        <input class="tbox" type="text" id="hobby" name="hobby" value="${hobby}"readonly />
-                    </p>
-                    <p>
-                        <label for="merit">장점</label><br>    
-                        <input class="tbox" type="text" id="merit" name="merit" value="${merit}"readonly />
-                    </p>
-                    <p>
-                        <label for="style">협업 스타일</label><br>
-                        <input class="tbox" type="text" id="style" name="style" value="${style}"readonly />
-                    </p>
-                    <p>
-                        <label for="blog">블로그 주소 -></label><a href="${blog}"> 이동</a><br>
-                        <input class="tbox" type="text" id="blog" name="blog" value="${blog}"readonly />
-                    </p>
-                    <p>
-                        <label for="blog">팀 특징</label>
-                        <input class="tbox" type="text" id="signature" name="signature" value="${signature}"/>
-                    </p>
-                    <p>
-                        <label for="blog">팀 목표</label>
-                        <input class="tbox" type="text" id="goal" name="goal" value="${goal}"/>
-                    </p>
-                    <p>
-                        <label for="blog">팀 약속</label>
-                        <input class="tbox" type="text" id="promise" name="promise" value="${promise}"/>
-                    </p>
-                    </div>`;
+      let temp_html = `<div>
+                        <img class="main-imoji" src="${imageURL}">
+                        <textarea class="comment" id="comment" name="comment">${comment}</textarea>
+                      </div>
+                      <div class="controls">
+                          <p>
+                          <label for="name">이름</label><br>
+                          <input class="tbox" type="text" id="name" name="name" value="${name}"readonly />
+                      </p>
+                      <p>
+                          <label for="mbti">MBTI</label><br>
+                          <input class="tbox" type="text" id="mbti" name="mbti" value="${mbti}"readonly />
+                      </p>
+                      <p>
+                          <label for="hobby">취미</label><br>
+                          <input class="tbox" type="text" id="hobby" name="hobby" value="${hobby}"readonly />
+                      </p>
+                      <p>
+                          <label for="merit">장점</label><br>    
+                          <input class="tbox" type="text" id="merit" name="merit" value="${merit}"readonly />
+                      </p>
+                      <p>
+                          <label for="style">협업 스타일</label><br>
+                          <input class="tbox" type="text" id="style" name="style" value="${style}"readonly />
+                      </p>
+                      <p>
+                          <label for="blog">블로그 주소 -></label><a href="${blog}"> 이동</a><br>
+                          <input class="tbox" type="text" id="blog" name="blog" value="${blog}"readonly />
+                      </p>
+                      <p>
+                          <label for="blog">팀 특징</label>
+                          <input class="tbox" type="text" id="signature" name="signature" value="${signature}"/>
+                      </p>
+                      <p>
+                          <label for="blog">팀 목표</label>
+                          <input class="tbox" type="text" id="goal" name="goal" value="${goal}"/>
+                      </p>
+                      <p>
+                          <label for="blog">팀 약속</label>
+                          <input class="tbox" type="text" id="promise" name="promise" value="${promise}"/>
+                      </p>
+                      </div>`;
       $(".content").append(temp_html);
     });
 });
@@ -127,8 +131,11 @@ function content_modify() {
   let signature = $("#signature").val();
   let goal = $("#goal").val();
   let promise = $("#promise").val();
+  let comment = $("#comment").val();
+
   $(".controls").empty();
-  let temp_html = `<div class="controls">
+  let temp_html = `<textarea class="comment" id="comment" name="comment">${comment}</textarea>
+                    <div class="controls">
                         <p>
                         <label for="name">이름</label><br>
                         <input class="input_tag" type="text" id="name" name="name" value="${name}" readonly/>
@@ -186,6 +193,7 @@ function complete_modify() {
   let signature = $("#signature").val();
   let goal = $("#goal").val();
   let promise = $("#promise").val();
+  let comment = $("#comment").val();
   let formData = new FormData();
   formData.append("name", name);
   formData.append("mbti", mbti);
@@ -196,6 +204,7 @@ function complete_modify() {
   formData.append("signature", signature);
   formData.append("goal", goal);
   formData.append("promise", promise);
+  formData.append("comment", comment);
   fetch("/modify", { method: "POST", body: formData })
     .then((response) => response.json())
     .then((data) => {

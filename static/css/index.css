@@ -9,7 +9,7 @@
   background-position: center;
   display: inline-block;
   margin-right: 50px;
-  bottom: 10px;
+  bottom: -15px;
 }
 .img-box1:hover {
   background-image: url("/static/img/KJS2.gif");
@@ -41,7 +41,7 @@
   background-position: center;
   display: inline-block;
   margin-right: 50px;
-  bottom: 10px;
+  bottom: 30px;
 }
 .img-box3:hover {
   background-image: url("/static/img/AHM2.gif");
@@ -57,6 +57,7 @@
   background-position: center;
   display: inline-block;
   margin-right: 30px;
+  top: 10px;
 }
 .img-box4:hover {
   background-image: url("/static/img/YSM2.gif");
@@ -71,8 +72,8 @@
   background-size: 100% 100%;
   background-position: center;
   display: inline-block;
-  margin-right: 100px;
-  top: 40px;
+  margin-right: 30px;
+  top: -7px;
 }
 .img-box5:hover {
   background-image: url("/static/img/KSH2.gif");

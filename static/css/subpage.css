@@ -70,6 +70,7 @@ body {
   font-size: 30px;
   resize: none;
   text-align: center;
+  overflow-y: hidden;
 }
 
 .comment:focus {

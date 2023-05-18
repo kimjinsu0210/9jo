@@ -28,6 +28,7 @@ def input():
     signature = request.form['signature']
     goal = request.form['goal']
     promise = request.form['promise']
+    comment = request.form['comment']
 
     doc = {
         'name': name,
@@ -38,7 +39,8 @@ def input():
         'blog': blog,
         'signature': signature,
         'goal': goal,
-        'promise': promise
+        'promise': promise,
+        'comment': comment
     }
     db.introduce.insert_one(doc)
     return redirect('/static/html/input.html') 
@@ -55,6 +57,7 @@ def modify():
     signature = request.form['signature']
     goal = request.form['goal']
     promise = request.form['promise']
+    comment = request.form['comment']
 
     db.introduce.delete_one({'name': name})
     doc = {
@@ -66,7 +69,8 @@ def modify():
         'blog': blog,
         'signature': signature,
         'goal': goal,
-        'promise': promise
+        'promise': promise,
+        'comment': comment
     }
     db.introduce.insert_one(doc)
     user = db.introduce.find_one({'name':name},{'_id':False})
