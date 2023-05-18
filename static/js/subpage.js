@@ -134,8 +134,7 @@ function content_modify() {
   let comment = $("#comment").val();
 
   $(".controls").empty();
-  let temp_html = `<textarea class="comment" id="comment" name="comment">${comment}</textarea>
-                    <div class="controls">
+  let temp_html = `<div class="controls">
                         <p>
                         <label for="name">이름</label><br>
                         <input class="input_tag" type="text" id="name" name="name" value="${name}" readonly/>
