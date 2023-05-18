@@ -57,6 +57,26 @@ body {
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0);
 }
+
+.comment {
+  height: 327px;
+  width: 250px;
+  margin-top: 100px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: solid 5px #cfdce9;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 30px;
+  font-size: 30px;
+  resize: none;
+  text-align: center;
+  line-height: 320px;
+}
+
+.comment:focus {
+  outline: none;
+}
+
 .controls {
   width: 70%;
   font-size: 18px;
