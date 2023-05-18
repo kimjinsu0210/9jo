@@ -26,7 +26,7 @@ def input():
         'blog': blog
     }
     db.introduce.insert_one(doc)
-    return redirect('/static/html/input.html')
+    return redirect('/static/html/subpage.html')
 
 @app.route("/input", methods=["GET"])
 def bucket_get():

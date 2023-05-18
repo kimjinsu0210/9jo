@@ -24,17 +24,45 @@
 
   <script>
     function content_modify() {
-      document.getElementByld()
+      const BTN = document.getElementById('btn');
+      const READ = document.querySelectorAll('.tbox');
+
+      BTN.addEventListener("click", function () {
+        if (BTN.innerText === '내용 수정') {
+          BTN.innerText = '완료';
+        } else BTN.innerText = '내용 수정';
+      })
+
+      BTN.addEventListener("click", function () {
+        if (BTN.innerText === '내용 수정') {
+          document.getElementById('target_btn').style.visibility = 'hidden'
+        } else { document.getElementById('target_btn').style.visibility = 'visible' }
+      })
+
+      READ.forEach((a) => {
+        BTN.addEventListener("click", function () {
+          if (BTN.innerText === '내용 수정') {
+            a.readOnly = true;
+          } else {
+            a.readOnly = false;
+          }
+        })
+      })
+
+      let name = $('#name').val()
+      if (name === '김성훈') {
+        console.log('hihi')
+      }
     }
 
     function show_info() {
       $(".team-name").on('click', function (e) {
         let value = e.target.id
-        console.log(value)
+        // console.log(value)
 
         fetch('/input').then(res => res.json()).then(data => {
           let rows = data['result'];
-          
+
           rows.forEach((a) => {
             let name = a['name'];
             let mbti = a['mbti'];
@@ -43,34 +71,66 @@
             let style = a['style'];
             let blog = a['blog'];
 
+            if (value === name && name === '김성훈') {
+              $('#main-imoji').empty();
+              let temp_html2 = `<img class="main-imoji" src="/static/img/KSH.png">`
+              $('#main-imoji').append(temp_html2);
+            } else if (value === name && name === '조인재') {
+              $('#main-imoji').empty();
+              let temp_html2 = `<img class="main-imoji" src="/static/img/JIJ.png">`
+              $('#main-imoji').append(temp_html2);
+            } else if (value === name && name === '김진수') {
+              $('#main-imoji').empty();
+              let temp_html2 = `<img class="main-imoji" src="/static/img/KJS.png">`
+              $('#main-imoji').append(temp_html2);
+            } else if (value === name && name === '윤수민') {
+              $('#main-imoji').empty();
+              let temp_html2 = `<img class="main-imoji" src="/static/img/YSM.png">`
+              $('#main-imoji').append(temp_html2);
+            } else if (value === name && name === '안홍민') {
+              $('#main-imoji').empty();
+              let temp_html2 = `<img class="main-imoji" src="/static/img/AHM.png">`
+              $('#main-imoji').append(temp_html2);
+            }
+
             if (value === name) {
               $('#controls').empty();
-              let temp_html =`<p>
-                                <label for="name">이름 </label>
-                                <div>${name}</div>
-                              </p>
-                              <p>
-                                <label for="name">MBTI </label>
-                                <div>${mbti}</div>
-                              </p>
-                              <p>
-                                <label for="hobby">취미 </label>
-                                <input type="text" id="hobby" name="hobby" placeholder="${hobby}" readonly />
-                              </p>
-                              <p>
-                                <label for="place">장점</label>
-                                <input type="text" id="merit" name="place" placeholder="${merit}" readonly />
-                              </p>
-                              <p>
-                                <label for="style">협업 스타일</label>
-                                <input type="text" id="style" name="style" placeholder="${style}" readonly />
-                              </p>
-                              <p>
-                                <label for="blog">블로그 주소</label>
-                                <input type="text" id="blog" name="blog" placeholder="${blog}" readonly />
-                              </p>
-                            </div>
-                        </div>`
+              let temp_html = `<p>
+                                  <label for="myname">이름 </label><br>
+                                  <input type="text" class="tbox" id="name" value="${name}" readonly>
+                                </p>
+                                <p>
+                                  <label for="mbti">MBTI </label><br>
+                                  <input type="text" class="tbox" id="mbti" value="${mbti}" readonly>
+                                </p>
+                                <p>
+                                  <label for="hobby">취미 </label><br>
+                                  <input type="text" class="tbox" id="hobby" value="${hobby}" readOnly>
+                                </p>
+                                <p>
+                                  <label for="merit">장점 </label><br>
+                                  <input type="text" class="tbox" id="merit" value="${merit}" readOnly>
+                                </p>
+                                <p>
+                                  <label for="blog">블로그 </label><br>
+                                  <input type="text" class="tbox" id="blog" value="${blog}" readOnly>
+                                </p>
+                                <p>
+                                  <label for="style">협업 스타일 </label><br>
+                                  <input type="text" class="tbox" id="style" value="${style}" readOnly>
+                                </p>
+                                <p>
+                                  <label for="team-sgnt">팀 특징 </label><br>
+                                  <input type="text" class="tbox" id="signature" value=":-D" readonly>
+                                </p>
+                                <p>
+                                  <label for="team-goal">팀 목표 </label><br>
+                                  <input type="text" class="tbox" id="goal" value=":-D" readonly>
+                                </p>
+                                <p>
+                                  <label for="team-prom">팀 약속 </label><br>
+                                  <input type="text" class="tbox" id="promise" value=":-D" readonly>
+                                </p>`
               $('#controls').append(temp_html);
             }
           });
@@ -86,9 +146,9 @@
       let merit = $('#merit').val();
       let style = $('#style').val();
       let blog = $('#blog').val();
-    
+
       let formData = new FormData();
-      formData.append('name', myname);
+      formData.append('name', name);
       formData.append('mbti', mbti);
       formData.append('hobby', hobby);
       formData.append('merit', merit);
@@ -111,7 +171,7 @@
         <ul class="team-list">
           <label class="member">9조대원 LIST</label>
           <p>
-            <li><button  onclick="show_info()" class="team-name" id="김성훈" >
+            <li><button onclick="show_info()" class="team-name" id="김성훈">
                 <img class="imoji" src="/static/img/KSH.png"> 김성훈</button>
             </li>
           </p>
@@ -139,60 +199,56 @@
       </aside>
       <div class="box-contents">
         <div class="content">
-          <img class="main-imoji" src="/static/img/mouse.png">
+          <div id="main-imoji"><img class="main-imoji" src="/static/img/mouse.png"></div>
           <form name="" method="" action="">
             <div class="controls" id="controls">
               <p>
-                <label for="name">이름 </label>
-                <input type="text" id="name" name="name" readonly />
+                <label for="name">이름 </label><br>
+                <input type="text" class="tbox" id="name" readonly>
               </p>
               <p>
-                <select class="MBTI-list" id="mbti">
-                  <option label="MBTI"></option>
-                  <option value="1">ENFP</option>
-                  <option value="2">ENTP</option>
-                  <option value="3">ENFJ</option>
-                  <option value="4">ENTJ</option>
-                  <option value="5">ESFP</option>
-                  <option value="6">ESTP</option>
-                  <option value="7">ESFJ</option>
-                  <option value="8">ESFP</option>
-                  <option value="9">INFP</option>
-                  <option value="10">INTP</option>
-                  <option value="11">INFJ</option>
-                  <option value="12">INTJ</option>
-                  <option value="13">ISTP</option>
-                  <option value="14">ISTJ</option>
-                  <option value="15">ISFP</option>
-                  <option value="16">ISFJ</option>
-                </select>
+                <label for="mbti">MBTI </label><br>
+                <input type="text" class="tbox" id="mbti" readonly>
               </p>
               <p>
-                <label for="hobby">취미 </label>
-                <input type="text" id="hobby" name="hobby" readonly />
+                <label for="hobby">취미 </label><br>
+                <input type="text" class="tbox" id="hobby" readOnly>
               </p>
               <p>
-                <label for="place">장점</label>
-                <input type="text" id="merit" name="place" readonly />
+                <label for="merit">장점 </label><br>
+                <input type="text" class="tbox" id="merit" readOnly>
               </p>
               <p>
-                <label for="style">협업 스타일</label>
-                <input type="text" id="style" name="style" readonly />
+                <label for="blog">블로그 </label><br>
+                <input type="text" class="tbox" id="blog" readOnly>
               </p>
               <p>
-                <label for="blog">블로그 주소</label>
-                <input type="text" id="blog" name="blog" readonly />
+                <label for="style">협업 스타일 </label><br>
+                <input type="text" class="tbox" id="style" readOnly>
+              </p>
+              <p>
+                <label for="team-sgnt">팀 특징 </label><br>
+                <input type="text" class="tbox" id="signature" readonly>
+              </p>
+              <p>
+                <label for="team-goal">팀 목표 </label><br>
+                <input type="text" class="tbox" id="goal" readonly>
+              </p>
+              <p>
+                <label for="team-prom">팀 약속 </label><br>
+                <input type="text" class="tbox" id="promise" readonly>
               </p>
             </div>
         </div>
-        <p><textarea class="introduce" placeholder="  개인 소개" id="id" name="introduce" readonly></textarea></p>
-        <input type="button" onclick="content_modify()" id="btn" class="btn btn-outline-dark" value="내용 수정"
-          name=""></button></form>
+        <div class="btn">
+          <button type="button" class="submit-btn" onclick="save_info()" id="target_btn">저장/전송</button>
+          <button type="button" onclick="content_modify()" id="btn" class="change-btn">내용 수정</button>
+        </div>
+        </form>
       </div>
     </section>
   </div>
   <button type="button" id="main-btn" class="btn btn-outline-dark">메인페이지</button>
-  <input type="button" value="정보넣기" onclick="location.href='input.html'">
 </body>
 
 </html>
