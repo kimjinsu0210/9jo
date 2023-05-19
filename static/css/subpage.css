@@ -1,0 +1,157 @@
+/* 전체폰트 */
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 틀 */
+:root {
+    --gap: 20px;
+}
+.container {
+    width: 1200px;
+    margin: 0 auto;
+}
+.box {
+    display: flex;
+    padding: var(--gap);
+    gap: var(--gap);
+    min-height: 800px;
+}
+
+/* 컨텐츠 박스 */
+.box-sidebar,
+.box-contents {
+    padding: var(--gap);
+    background-color: rgba(255,255,255,0.7);
+}
+.box-i {
+    width: 300px;
+    height: 850px;
+    flex-shrink: 0;
+}
+.box-contents {
+    flex-grow: 1;
+    align-items: center;
+    height: 900px;
+    border: solid 2px rgb(32, 32, 32);
+    border-radius: 40px;
+}
+.content {
+    display: flex;
+    padding: 20px;
+    flex-direction: row-reverse;
+    margin-right: 20px;
+    gap: 50px;
+
+}
+.main-imoji {
+    width: 300px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5);
+}
+.controls {
+    width: 70%;
+    font-size: 18px;
+}
+input {
+    margin: 3px;
+}
+.tbox {
+    width: 530px;
+    margin: 4px;
+    border: none;
+    border-bottom: solid 1px black;
+    background-color: transparent;
+}
+.tbox:focus {
+    outline: none;
+}
+.change-btn{
+    padding: 5px 8px 5px 8px;
+    background-color: transparent;
+    border-radius: 10px;
+    margin-left: 20px;
+    background-color:rgba(255,255,255,0.7);
+}
+.change-btn:hover {
+    background-color: rgb(170, 170, 170);
+    transition: 0.2s;
+}
+.change-btn2 {
+    padding: 2px 8px 2px 8px;
+    background-color: transparent;
+    border-radius: 10px;
+    
+}
+.change-btn2:hover {
+    background-color: rgb(170, 170, 170);
+    transition: 0.2s;
+}
+label{
+    font-weight: bold;
+}
+.input_tag{
+    width: 530px;
+}
+/* 9조대원 LIST 박스 */
+.box-top {
+    width: 300px;
+    height: 700px;
+    padding: var(--gap);
+    border: solid 2px rgb(32, 32, 32);
+    border-radius: 40px;
+    background-color: rgba(255,255,255,0.7);
+}
+.member {
+    font-size: 20px;
+    font-weight: bold;
+}
+.team-list {
+    list-style: none;
+    padding-left: 0px;
+    max-height: 600px;
+}
+.imoji {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: white;
+    margin: 10px 20px 10px 10px;
+}
+li {
+    padding-top: 10px;
+}
+li:hover {
+    background-color: rgb(170, 170, 170);
+    transition: 0.2s;
+    border-radius: 30px;
+}
+
+/* 메인페이지 버튼 */
+.box-under {
+    height: 70px;
+    border: solid 2px black;
+    border-radius: 40px;
+    margin-top: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.7);
+}
+.box-under:hover {
+    background-color: rgb(170, 170, 170);
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+/* a태그 */
+a{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+a:hover {
+    color: black;
+    font-weight: bold;
+}

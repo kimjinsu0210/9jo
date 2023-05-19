@@ -1,0 +1,108 @@
+/* 이모지 관련 css */
+/* 팀원(김진수) */
+.img-box1 {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-image: url('/static/img/KJS.png');
+    background-size: 100% 100%;
+    background-position: center;
+    display: inline-block;
+    margin-right: 50px;
+    bottom: 10px;
+}
+.img-box1:hover {
+    background-image: url('/static/img/KJS2.gif')
+}
+
+/* 팀원(조인재) */
+.img-box2 {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-image: url('/static/img/JIJ.png');
+    background-size: 100% 100%;
+    background-position: center;
+    display: inline-block;
+    margin-right: 70px;
+    bottom: 30px;
+}
+.img-box2:hover {
+    background-image: url('/static/img/JIJ2.gif')
+}
+
+/* 팀원(안홍민) */
+.img-box3 {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-image: url('/static/img/AHM.png');
+    background-size: 100% 100%;
+    background-position: center;
+    display: inline-block;
+    margin-right: 50px;
+    bottom: 10px;
+}
+.img-box3:hover {
+        background-image: url('/static/img/AHM2.gif')
+}
+
+/* 팀원(윤수민) */
+.img-box4 {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-image: url('/static/img/YSM.png');
+    background-size: 100% 100%;
+    background-position: center;
+    display: inline-block;
+    margin-right: 30px;
+    
+}
+.img-box4:hover {
+    background-image: url('/static/img/YSM2.gif');
+    
+}
+
+
+/* 팀원(김성훈) */
+.img-box5 {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-image: url('/static/img/KSH.png');
+    background-size: 100% 100%;
+    background-position: center;
+    display: inline-block;
+    margin-right: 100px;
+    top: 40px;
+
+}
+.img-box5:hover {
+    background-image: url('/static/img/KSH2.gif')
+}
+
+/* 배경 및 자동차 */
+body {
+    background: url(/static/img/truck_whole.jpg) no-repeat center fixed;
+    background-size: cover;
+}
+.img {
+    width: 100%;
+    position: fixed;
+    top: 170px;
+    right: 0;
+    left: 0;
+}
+
+/* 이모지 */
+.emoji {
+    text-align: center;
+    position: relative;
+    top: 50px;
+}
+
+/* 태그속성 */
+a {
+    text-decoration: none;
+}        

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>9조대원소개</title>
+    <link href="/static/img/sos.png" rel="shortcut icon" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/subpage.css">
+    <script src="/static/js/subpage.js"></script>
+
+   
+</head>
+
+<body>
+    <div class="container">
+        <section class="box">
+            <aside class="box-i">
+                <div class="box-top">
+                    <ul class="team-list">
+                        <label class="member">9조대원 LIST</label>
+                        
+                        <li class="img_change1"><a href="/static/html/subpage.html?name=김성훈">
+                                <img id="img1" class="imoji" src="/static/img/KSH.png"> 김성훈</a>
+                        </li>
+                        <hr>
+                        <li class="img_change2"><a href="/static/html/subpage.html?name=조인재">
+                                <img id="img2" class="imoji" src="/static/img/JIJ.png"> 조인재</a>
+                        </li>
+                        <hr>
+                        <li class="img_change3"><a href="/static/html/subpage.html?name=김진수">
+                                <img id="img3" class="imoji" src="/static/img/KJS.png"> 김진수</a>
+                        </li>
+                        <hr>
+                        <li class="img_change4"><a href="/static/html/subpage.html?name=윤수민">
+                                <img id="img4" class="imoji" src="/static/img/YSM.png"> 윤수민</a>
+                        </li>
+                        <hr>
+                        <li class="img_change5"><a href="/static/html/subpage.html?name=안홍민">
+                                <img id="img5" class="imoji" src="/static/img/AHM.png"> 안홍민</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <input type="button" value="정보넣기" onclick="location.href='input.html'" hidden>
+                <a href="/" >
+                    <div class="box-under">메인 페이지</div>
+                </a>
+            </aside>
+
+            <div class="box-contents">
+                <div class="content">
+                    <img class="main-imoji" src="">
+
+                    <div class="controls">
+                        <p>
+                            <label for="myname">이름 </label><br>
+                            <input type="text" class="tbox" id="myname" readonly>
+                        </p>
+                        <p>
+                            <label for="mbti">MBTI </label><br>
+                            <input type="text" class="tbox" id="mbti" readonly>
+                        </p>
+                        <p>
+                            <label for="hobby">취미 </label><br>
+                            <input type="text" class="tbox" id="hobby" readOnly>
+                        </p>
+                        <p>
+                            <label for="merit">장점 </label><br>
+                            <input type="text" class="tbox" id="merit" readOnly>
+                        </p>
+                        <p>
+                            <label for="style">협업 스타일 </label><br>
+                            <input type="text" class="tbox" id="style" readOnly>
+                        </p>
+                        <p>
+                            <label for="blog">블로그 주소 </label><br>
+                            <input type="text" class="tbox" id="blog" readOnly>
+                        </p>
+                        <p>
+                            <label for="team-sgnt">팀 특징 </label><br>
+                            <input type="text" class="tbox" id="signature" readonly>
+                        </p>
+                        <p>
+                            <label for="team-goal">팀 목표 </label><br>
+                            <input type="text" class="tbox" id="goal" readonly>
+                        </p>
+                        <p>
+                            <label for="team-prom">팀 약속</label><br>
+                            <input type="text" class="tbox" id="promise" readonly>
+                        </p>
+                    </div>
+                </div>
+                <div class="modify_complete">
+                    <input type="button" onclick="content_modify()" id="btn" class="change-btn" value="내용 수정">
+                </div>
+
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>
