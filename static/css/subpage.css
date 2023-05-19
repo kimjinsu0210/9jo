@@ -1,157 +1,199 @@
 /* 전체폰트 */
 * {
-    font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+/*배경*/
+body {
+  background-image: linear-gradient(to bottom, #f5f7fa 0%, #73a1f5 200%);
+  height: 100vh;
 }
 
 /* 틀 */
 :root {
-    --gap: 20px;
+  --gap: 20px;
 }
 .container {
-    width: 1200px;
-    margin: 0 auto;
+  width: 1200px;
+  margin: 0 auto;
 }
 .box {
-    display: flex;
-    padding: var(--gap);
-    gap: var(--gap);
-    min-height: 800px;
+  display: flex;
+  padding: var(--gap);
+  gap: var(--gap);
+  min-height: 800px;
 }
 
 /* 컨텐츠 박스 */
 .box-sidebar,
 .box-contents {
-    padding: var(--gap);
-    background-color: rgba(255,255,255,0.7);
+  padding: var(--gap);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .box-i {
-    width: 300px;
-    height: 850px;
-    flex-shrink: 0;
+  width: 300px;
+  height: 850px;
+  flex-shrink: 0;
 }
 .box-contents {
-    flex-grow: 1;
-    align-items: center;
-    height: 900px;
-    border: solid 2px rgb(32, 32, 32);
-    border-radius: 40px;
+  flex-grow: 1;
+  align-items: center;
+  height: 900px;
+  border: none;
+  border-radius: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 3px 3px 10px -1px grey;
 }
 .content {
-    display: flex;
-    padding: 20px;
-    flex-direction: row-reverse;
-    margin-right: 20px;
-    gap: 50px;
-
+  display: flex;
+  padding: 20px;
+  flex-direction: row-reverse;
+  margin-right: 20px;
+  gap: 50px;
 }
 .main-imoji {
-    width: 300px;
-    height: 250px;
-    border-radius: 50%;
-    background-color: rgba(255,255,255,0.5);
+  width: 300px;
+  height: 250px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0);
 }
+
+.comment {
+  height: 410px;
+  width: 300px;
+  margin-top: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: solid 5px #cfdce9;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 30px;
+  font-size: 30px;
+  resize: none;
+  text-align: center;
+  overflow-y: hidden;
+}
+
+.comment:focus {
+  outline: none;
+}
+
 .controls {
-    width: 70%;
-    font-size: 18px;
+  width: 70%;
+  font-size: 18px;
 }
 input {
-    margin: 3px;
+  margin: 3px;
 }
 .tbox {
-    width: 530px;
-    margin: 4px;
-    border: none;
-    border-bottom: solid 1px black;
-    background-color: transparent;
+  width: 530px;
+  margin: 4px;
+  border: none;
+  border-bottom: solid 1px black;
+  background-color: transparent;
 }
 .tbox:focus {
-    outline: none;
+  outline: none;
 }
-.change-btn{
-    padding: 5px 8px 5px 8px;
-    background-color: transparent;
-    border-radius: 10px;
-    margin-left: 20px;
-    background-color:rgba(255,255,255,0.7);
+.change-btn {
+  padding: 5px 8px 5px 8px;
+  background-color: transparent;
+  border-radius: 10px;
+  margin-left: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .change-btn:hover {
-    background-color: rgb(170, 170, 170);
-    transition: 0.2s;
+  background-color: rgb(170, 170, 170);
+  transition: 0.2s;
 }
 .change-btn2 {
-    padding: 2px 8px 2px 8px;
-    background-color: transparent;
-    border-radius: 10px;
-    
+  padding: 2px 8px 2px 8px;
+  background-color: transparent;
+  border-radius: 10px;
 }
 .change-btn2:hover {
-    background-color: rgb(170, 170, 170);
-    transition: 0.2s;
+  background-color: rgb(170, 170, 170);
+  transition: 0.2s;
 }
-label{
-    font-weight: bold;
+label {
+  font-weight: bold;
 }
-.input_tag{
-    width: 530px;
+.input_tag {
+  width: 530px;
 }
 /* 9조대원 LIST 박스 */
 .box-top {
-    width: 300px;
-    height: 700px;
-    padding: var(--gap);
-    border: solid 2px rgb(32, 32, 32);
-    border-radius: 40px;
-    background-color: rgba(255,255,255,0.7);
+  width: 300px;
+  height: 650px;
+  padding: var(--gap);
+  border: none;
+  border-radius: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 3px 3px 10px -1px grey;
 }
 .member {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 .team-list {
-    list-style: none;
-    padding-left: 0px;
-    max-height: 600px;
+  list-style: none;
+  padding-left: 0px;
+  max-height: 600px;
 }
 .imoji {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: white;
-    margin: 10px 20px 10px 10px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: white;
+  margin: 10px 20px 10px 10px;
 }
-li {
-    padding-top: 10px;
-}
+
 li:hover {
-    background-color: rgb(170, 170, 170);
-    transition: 0.2s;
-    border-radius: 30px;
+  background-color: rgb(170, 170, 170);
+  transition: 0.2s;
+  border-radius: 30px;
+}
+
+/*뮤직 플레이어*/
+audio::-webkit-media-controls-panel {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.box-audio {
+  width: 300px;
+  border: none;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 85px 0 0 -21px;
+  box-shadow: 3px 3px 10px -1px grey;
 }
 
 /* 메인페이지 버튼 */
 .box-under {
-    height: 70px;
-    border: solid 2px black;
-    border-radius: 40px;
-    margin-top: 130px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255,255,255,0.7);
+  height: 100px;
+  border: none;
+  border-radius: 40px;
+  margin-top: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 3px 3px 10px -1px grey;
 }
 .box-under:hover {
-    background-color: rgb(170, 170, 170);
-    transition: 0.2s;
-    cursor: pointer;
+  background-color: rgb(170, 170, 170);
+  transition: 0.2s;
+  cursor: pointer;
 }
 
 /* a태그 */
-a{
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
+a {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
 }
 a:hover {
-    color: black;
-    font-weight: bold;
+  color: black;
+  font-weight: bold;
 }
